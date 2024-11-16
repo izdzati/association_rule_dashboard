@@ -251,6 +251,20 @@ def input_data():
         st.write("**Hasil Fuzzifikasi Data (Combined Data):**")
         st.write(combined_data.head())  # Menampilkan hanya 5 baris pertama
 
+        # Tambahkan keterangan di bawah hasil fuzzifikasi
+        st.markdown(
+            """
+            **Keterangan:**
+            - **S** : Stable
+            - **LD** : Low Decrease
+            - **MD** : Medium Decrease
+            - **HD** : High Decrease
+            - **LI** : Low Increase
+            - **MI** : Medium Increase
+            - **HI** : High Increase
+            """
+        )
+
         # Simpan hasil kombinasi di session_state
         st.session_state['data'] = combined_data
         
@@ -258,6 +272,7 @@ def input_data():
         st.info("Silakan ke menu **Hasil Association Rule** untuk melanjutkan analisis.")
     else:
         st.info("Silakan unggah file CSV atau Excel untuk memulai analisis.")
+
 
 # Halaman Hasil Association Rule
 def display_results():
