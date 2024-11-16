@@ -195,7 +195,7 @@ def categorize_fuzzy(classification, fuzzy_data):
     combined_data = pd.DataFrame(index=classification.index)
     for column in classification.columns:
         for level in ['L', 'M', 'H']:
-            fuzzy_label = "_" + column + level
+            fuzzy_label =  column + "_" + level
             if level == 'L':
                 combined_data[fuzzy_label + "I"] = (classification[column] == "increase") & (fuzzy_data[column + '_L'] > 0)
                 combined_data[fuzzy_label + "D"] = (classification[column] == "decrease") & (fuzzy_data[column + '_L'] > 0)
