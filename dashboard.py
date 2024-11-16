@@ -61,8 +61,8 @@ def display_info():
     st.markdown(
         """
         <div style="text-align: center;">
-            <p>$\\text{support}(A) = P(A) = \\frac{n(A)}{n(S)}$</p>
-            <p>$\\text{support}(A, B) = P(A \\cap B) = \\frac{n(A \\cap B)}{n(S)}$</p>
+    st.latex(r"\text{support}(A) = P(A) = \frac{n(A)}{n(S)}")
+    st.latex(r"\text{support}(A, B) = P(A \cap B) = \frac{n(A \cap B)}{n(S)}")
         </div>
         """,
         unsafe_allow_html=True
