@@ -232,13 +232,25 @@ def input_data():
             data.set_index("Periode", inplace=True)
         else:
             st.warning("Kolom 'Periode' tidak ditemukan. Data akan digunakan tanpa mengatur 'Periode' sebagai index.")
-        st.write("Data Harga Komoditas", data)
         
+        # Tampilkan hanya head dari data yang diinput
+        st.write("**Data Harga Komoditas (5 Baris Pertama):**")
+        st.write(data.head())
+
         # Pra-pemrosesan data
         data_abs, classification = calculate_percentage_change(data)
         fuzzy_data = fuzzify(data_abs)
         combined_data = categorize_fuzzy(classification, fuzzy_data)
-        st.session_state['data'] = combined_data  # Simpan hasil kombinasi di session_state
+        
+        # Tampilkan hasil fuzzifikasi data
+        st.write("**Hasil Fuzzifikasi Data (Combined Data):**")
+        st.write(combined_data.head())  # Menampilkan hanya 5 baris pertama
+
+        # Simpan hasil kombinasi di session_state
+        st.session_state['data'] = combined_data
+        
+        # Berikan keterangan untuk melanjutkan ke menu berikutnya
+        st.info("Silakan ke menu **Hasil Association Rule** untuk melanjutkan analisis.")
     else:
         st.info("Silakan unggah file CSV atau Excel untuk memulai analisis.")
 
@@ -247,22 +259,38 @@ def display_results():
     st.title("Hasil Association Rule")
     data = st.session_state.get('data', None)
     if data is not None:
+        # Input parameter
         min_support = st.number_input("Minimum Support", min_value=0.005, max_value=1.0, value=0.1, step=0.01)
         min_confidence = st.number_input("Minimum Confidence", min_value=0.01, max_value=1.0, value=0.5, step=0.01)
         min_lift = st.slider("Minimum Lift", min_value=0.1, max_value=10.0, value=1.0, step=0.1)
+        
+        # Jalankan FP-Growth dan Association Rules
         rules = run_fpgrowth_and_association_rules(data, min_support, min_confidence, min_lift)
+        
         if not rules.empty:
-            st.write("Hasil Association Rules:")
+            st.write("**Hasil Association Rules:**")
             st.write(rules)
+
+            # Pilih antecedents
             antecedent_options = data.columns.tolist()
+            st.write("**Pilih Antecedents**")
+            st.markdown(
+                """
+                **Keterangan**:
+                - **Antecedent** adalah pergerakan harga komoditas yang akan menjadi sebab dari pergerakan harga lainnya.
+                - **Consequent** adalah dampak dari pergerakan harga komoditas.
+                """
+            )
             selected_antecedents = st.multiselect("Pilih Antecedents", antecedent_options)
+            
             if selected_antecedents:
                 filtered_rules = rules[rules['antecedents'].apply(lambda x: any(item in x for item in selected_antecedents))]
-                st.write("Association Rules dengan Antecedents Terpilih", filtered_rules)
+                st.write("**Association Rules dengan Antecedents Terpilih:**")
+                st.write(filtered_rules)
         else:
             st.write("Tidak ada aturan asosiasi yang ditemukan.")
     else:
-        st.info("Silakan unggah data pada bagian Input Data terlebih dahulu.")
+        st.info("Silakan unggah data pada bagian **Input Data** terlebih dahulu.")
 
 # Fungsi utama untuk navigasi
 def main():
