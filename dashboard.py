@@ -215,8 +215,13 @@ def run_fpgrowth_and_association_rules(data, min_support, min_confidence, min_li
     if frequent_itemsets.empty:
         st.warning("Tidak ada frequent itemsets yang ditemukan dengan min_support yang dipilih.")
         return pd.DataFrame()
-    rules = association_rules(frequent_itemsets, num_itemsets=2, metric="confidence", min_threshold=min_confidence)
+    rules = association_rules(frequent_itemsets, metric="confidence", min_threshold=min_confidence)
     filtered_rules = rules[rules['lift'] >= min_lift]
+
+    # Membersihkan frozenset dari kolom antecedents dan consequents
+    filtered_rules['antecedents'] = filtered_rules['antecedents'].apply(lambda x: ', '.join(list(x)))
+    filtered_rules['consequents'] = filtered_rules['consequents'].apply(lambda x: ', '.join(list(x)))
+
     return filtered_rules[['antecedents', 'consequents', 'support', 'confidence', 'lift']]
 
 # Halaman Input Data
