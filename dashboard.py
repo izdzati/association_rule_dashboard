@@ -2,8 +2,6 @@ import streamlit as st
 import pandas as pd
 from mlxtend.frequent_patterns import fpgrowth, association_rules
 
-# Fungsi untuk menampilkan pengertian dan info tentang Association Rule Mining
-import streamlit as st
 
 def display_info():
     st.title("Fuzzy Association Rule Mining")
