@@ -169,8 +169,6 @@ def display_info():
         unsafe_allow_html=True
     )
 
-if __name__ == "__main__":
-    display_info()
 
 # Implementasi fungsi berdasarkan code pertama
 def calculate_percentage_change(data):
