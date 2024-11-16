@@ -195,16 +195,16 @@ def categorize_fuzzy(classification, fuzzy_data):
     combined_data = pd.DataFrame(index=classification.index)
     for column in classification.columns:
         for level in ['L', 'M', 'H']:
-            fuzzy_label = column + "_" + level
+            fuzzy_label = column + level
             if level == 'L':
-                combined_data[fuzzy_label + "_I"] = (classification[column] == "increase") & (fuzzy_data[column + '_L'] > 0)
-                combined_data[fuzzy_label + "_D"] = (classification[column] == "decrease") & (fuzzy_data[column + '_L'] > 0)
+                combined_data[fuzzy_label + "I"] = (classification[column] == "increase") & (fuzzy_data[column + '_L'] > 0)
+                combined_data[fuzzy_label + "D"] = (classification[column] == "decrease") & (fuzzy_data[column + '_L'] > 0)
             elif level == 'M':
-                combined_data[fuzzy_label + "_I"] = (classification[column] == "increase") & (fuzzy_data[column + '_M'] > 0)
-                combined_data[fuzzy_label + "_D"] = (classification[column] == "decrease") & (fuzzy_data[column + '_M'] > 0)
+                combined_data[fuzzy_label + "I"] = (classification[column] == "increase") & (fuzzy_data[column + '_M'] > 0)
+                combined_data[fuzzy_label + "D"] = (classification[column] == "decrease") & (fuzzy_data[column + '_M'] > 0)
             elif level == 'H':
-                combined_data[fuzzy_label + "_I"] = (classification[column] == "increase") & (fuzzy_data[column + '_H'] > 0)
-                combined_data[fuzzy_label + "_D"] = (classification[column] == "decrease") & (fuzzy_data[column + '_H'] > 0)
+                combined_data[fuzzy_label + "I"] = (classification[column] == "increase") & (fuzzy_data[column + '_H'] > 0)
+                combined_data[fuzzy_label + "D"] = (classification[column] == "decrease") & (fuzzy_data[column + '_H'] > 0)
         combined_data[column + "_S"] = (classification[column] == "stable")
     combined_data = combined_data.astype(bool)
     return combined_data
