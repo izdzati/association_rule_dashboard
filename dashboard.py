@@ -61,8 +61,8 @@ def display_info():
     st.markdown(
         """
         <div style="text-align: center;">
-            <p>$\\text{support}(A) = P(A) = \\frac{n(A)}{n(S)}$$</p>
-            <p>$\\text{support}(A, B) = P(A \\cap B) = \\frac{n(A \\cap B)}{n(S)}$$</p>
+            <p>$\\text{support}(A) = P(A) = \\frac{n(A)}{n(S)}$</p>
+            <p>$\\text{support}(A, B) = P(A \\cap B) = \\frac{n(A \\cap B)}{n(S)}$</p>
         </div>
         """,
         unsafe_allow_html=True
@@ -98,7 +98,7 @@ def display_info():
     st.markdown(
         """
         <div style="text-align: center;">
-            <p>$\\text{confidence}(A \\rightarrow B) = P(B | A) = \\frac{P(A \\cap B)}{P(A)}$$</p>
+            <p>$\\text{confidence}(A \\rightarrow B) = P(B | A) = \\frac{P(A \\cap B)}{P(A)}$</p>
         </div>
         """,
         unsafe_allow_html=True
@@ -135,7 +135,7 @@ def display_info():
     st.markdown(
         """
         <div style="text-align: center;">
-            <p>$\\text{lift}(A \\rightarrow B) = \\frac{\\text{confidence}(A \\rightarrow B)}{\\text{support}(B)}$$</p>
+            <p>$\\text{lift}(A \\rightarrow B) = \\frac{\\text{confidence}(A \\rightarrow B)}{\\text{support}(B)}$</p>
         </div>
         """,
         unsafe_allow_html=True
