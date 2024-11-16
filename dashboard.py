@@ -57,17 +57,10 @@ def display_info():
         """,
         unsafe_allow_html=True
     )
-
-    st.markdown(
-        """
-        <div style="text-align: center;">
+    
     st.latex(r"\text{support}(A) = P(A) = \frac{n(A)}{n(S)}")
     st.latex(r"\text{support}(A, B) = P(A \cap B) = \frac{n(A \cap B)}{n(S)}")
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
+  
     st.markdown(
         """
         <div style="text-align: justify;">
@@ -95,15 +88,7 @@ def display_info():
         unsafe_allow_html=True
     )
 
-    st.markdown(
-        """
-        <div style="text-align: center;">
-            <p>$\\text{confidence}(A \\rightarrow B) = P(B | A) = \\frac{P(A \\cap B)}{P(A)}$</p>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-
+    st.latex(r"\text{confidence}(A \rightarrow B) = P(B | A) = \frac{P(A \cap B)}{P(A)}")
     st.markdown(
         """
         <div style="text-align: justify;">
@@ -131,16 +116,9 @@ def display_info():
         """,
         unsafe_allow_html=True
     )
-
-    st.markdown(
-        """
-        <div style="text-align: center;">
-            <p>$\\text{lift}(A \\rightarrow B) = \\frac{\\text{confidence}(A \\rightarrow B)}{\\text{support}(B)}$</p>
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
     
+    st.latex(r"\text{lift}(A \rightarrow B) = \frac{\text{confidence}(A \rightarrow B)}{\text{support}(B)}")
+ 
     st.markdown(
         """
         <div style="text-align: justify;">
@@ -155,6 +133,32 @@ def display_info():
         """,
         unsafe_allow_html=True
     )
+
+st.markdown(
+    """
+    <div style="text-align:justify">
+    <h3> Algoritma FP-Growth </h3>
+    <p>
+    Algoritma FP-Growth merupakan pengembangan dari algoritma apriori sehingga kekurangan dari algoritma apriori diperbaiki oleh algoritma FP-Growth. 
+    Pada algoritma apriori diperlukan generate candidate untuk mendapatkan frequent itemset, tetapi pada algoritma FP-Growth generate candidate tidak dilakukan karena telah menggunakan konsep pembangunan tree dalam pencarian frequent itemsets yang disebut dengan FP-Tree. 
+    Dengan menggunakan FP-Tree, frequent itemset dapat langsung diekstrak.
+    Adapun tahapan dalam algoritma FP-Growth adalah sebagai berikut.
+    1. <h3> Tahapan pembangkitan Conditional Pattern Base </h3> 
+    Conditional Pattern Base merupakan sub database yang berisi prefix path (lintasan prefix) dan suffix pattern (pola akhiran). 
+    Pembangkitan conditional pattern base didapatkan melalui FP-Tree yang telah dibangun sebelumnya. 
+    FP-Tree diperoleh dari menghitung frekuensi pergerakan harga bahan pokok yang terjadi, kemudian diurutkan dari terbesar hingga terkecil. 
+    Setelah diurutkan maka FP-Tree dapat dibentuk.
+    <strong> 2. Tahap pembangkitan Conditional FP-Tree </strong>
+    Pada tahap ini, support count dari setiap pergerakan harga bahan pokok pada setiap conditional pattern base dijumlahkan. 
+    Lalu, setiap pergerakan harga bahan pokok yang memiliki jumlah support count lebih besar atau sama dengan minimum support count akan dibangkitkan dengan conditional FP-Tree.
+    <strong> 3. Tahap pencarian Frequent Pattern </strong>
+    Apabila conditional FP-Tree merupakan lintasan tunggal (single path), maka didapatkan frequent pattern dengan melakukan kombinasi pergerakan harga bahan pokok untuk setiap conditional FP-Tree. 
+    Apabila conditional FP-Tree bukan lintasan tunggal, maka dilakukan pembangkitan FP-Growth secara rekursif.
+    </p>
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
 if __name__ == "__main__":
     display_info()
