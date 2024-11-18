@@ -298,7 +298,7 @@ def display_results():
                 """
                 **Keterangan**:
                 - **Antecedent** adalah pergerakan harga komoditas yang akan menjadi sebab dari pergerakan harga lainnya.
-                - **Consequent** adalah dampak dari pergerakan harga komoditas.
+                - **Consequent** adalah dampak dari pergerakan harga komoditas yang dipilih pada antecedent.
                 """
             )
             selected_antecedents = st.multiselect("Pilih Antecedents", antecedent_options)
