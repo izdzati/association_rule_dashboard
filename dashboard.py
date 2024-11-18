@@ -248,7 +248,7 @@ def input_data():
         combined_data = categorize_fuzzy(classification, fuzzy_data)
         
         # Tampilkan hasil fuzzifikasi data
-        st.write("** Preview Hasil Fuzzifikasi Data:**")
+        st.write("**Preview Hasil Fuzzifikasi Data:**")
         st.write(combined_data.head())  # Menampilkan hanya 5 baris pertama
 
         # Tambahkan keterangan di bawah hasil fuzzifikasi
