@@ -239,7 +239,7 @@ def input_data():
             st.warning("Kolom 'Periode' tidak ditemukan. Data akan digunakan tanpa mengatur 'Periode' sebagai index.")
         
         # Tampilkan hanya head dari data yang diinput
-        st.write("**Data Harga Komoditas (5 Baris Pertama):**")
+        st.write("**Preview Data Harga Komoditas :**")
         st.write(data.head())
 
         # Pra-pemrosesan data
@@ -248,7 +248,7 @@ def input_data():
         combined_data = categorize_fuzzy(classification, fuzzy_data)
         
         # Tampilkan hasil fuzzifikasi data
-        st.write("**Hasil Fuzzifikasi Data (Combined Data):**")
+        st.write("** Preview Hasil Fuzzifikasi Data:**")
         st.write(combined_data.head())  # Menampilkan hanya 5 baris pertama
 
         # Tambahkan keterangan di bawah hasil fuzzifikasi
