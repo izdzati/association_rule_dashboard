@@ -320,7 +320,7 @@ def display_results():
 
 # Fungsi utama untuk navigasi
 def main():
-    st.sidebar.title("Navigasi")
+    st.sidebar.title("🔎 Navigasi")
     page = st.sidebar.selectbox("Pilih Halaman", ["📖 Halaman Utama", "🔗 Input Data", "📊 Hasil Association Rule"])
 
     if page == "📖 Halaman Utama":
