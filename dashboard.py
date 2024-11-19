@@ -317,7 +317,7 @@ def main():
     st.sidebar.title("Navigasi")
     page = st.sidebar.selectbox("Pilih Halaman", ["Halaman Utama", "Input Data", "Hasil Association Rule"])
 
-    if page == "Main":
+    if page == "Halaman Utama":
         display_info()
     elif page == "Input Data":
         input_data()
