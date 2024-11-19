@@ -321,13 +321,13 @@ def display_results():
 # Fungsi utama untuk navigasi
 def main():
     st.sidebar.title("Navigasi")
-    page = st.sidebar.selectbox("Pilih Halaman", ["Halaman Utama", "Input Data", "Hasil Association Rule"])
+    page = st.sidebar.selectbox("Pilih Halaman", ["📖 Halaman Utama", "🔗 Input Data", "📊 Hasil Association Rule"])
 
-    if page == "Halaman Utama":
+    if page == "📖 Halaman Utama":
         display_info()
-    elif page == "Input Data":
+    elif page == "🔗 Input Data":
         input_data()
-    elif page == "Hasil Association Rule":
+    elif page == "📊 Hasil Association Rule":
         display_results()
 
 if __name__ == "__main__":
