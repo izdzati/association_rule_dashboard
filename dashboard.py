@@ -2,6 +2,12 @@ import streamlit as st
 import pandas as pd
 from mlxtend.frequent_patterns import fpgrowth, association_rules
 
+st.set_page_config(
+    page_title="Fuzzy Association Rule Dashboard",
+    page_icon="📊", 
+    layout="wide"
+)
+
 
 def display_info():
     st.title("Fuzzy Association Rule Mining")
